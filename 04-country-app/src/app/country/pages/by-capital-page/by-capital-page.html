@@ -1,0 +1,13 @@
+<app-country-search-input
+  placeHolderText="Search by capital..."
+  (searchValue)="onSearchCapital($event)"
+  [initialValue]="this.query()"
+  [debounceTime]="500"
+/>
+
+<app-country-list
+  [countries]="this.countryResource.value() ?? []"
+  [errorMessage]="this.countryResource.error()"
+  [isLoading]="this.countryResource.isLoading()"
+  [isEmpty]="this.countryResource.value()?.length === 0"
+/>
