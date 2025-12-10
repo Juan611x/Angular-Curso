@@ -1,0 +1,71 @@
+<section class="text-center my-8">
+  <h1 class="text-2xl font-bold">Custom Page</h1>
+  <p class="text-xl font-thin">This is a custom page with some example content.</p>
+</section>
+
+<div class="stats shadow">
+  <div class="stat">
+    <div class="stat-title">Toggle Case Pipe</div>
+    <div class="stat-value">{{ this.name() | toggleCase : this.upperCase() }}</div>
+    <div class="stat-desc">{{ this.name() }}</div>
+    <button class="btn btn-primary btn-sm mt-2" (click)="this.toggleCase()">Toggle Case</button>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section class="my-4">
+  <h1 class="text-2xl font-bold">Sort Heroes by: {{ this.sortBy() }}</h1>
+  <div class="flex gap-2 justify-end w-full">
+    <input
+      type="text"
+      class="input input-bordered w-full max-w-xs"
+      placeholder="Search heroes..."
+      (input)="searchQuery.set(searchInput.value)"
+      #searchInput
+    />
+
+    <button (click)="sortBy.set('name')" class="btn btn-primary">By Name</button>
+    <button (click)="sortBy.set('canFly')" class="btn btn-secondary">By Can Fly</button>
+    <button (click)="sortBy.set('color')" class="btn btn-accent">By Color</button>
+    <button (click)="sortBy.set('creator')" class="btn btn-info">By Creator</button>
+  </div>
+</section>
+
+<div class="overflow-x-auto w-full">
+  <table class="table w-full">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Can Fly</th>
+        <th>Color</th>
+        <th>Creator</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- row 1 -->
+      @for(hero of this.heroes()  | heroFilter:this.searchQuery() | heroSortBy:this.sortBy(); track $index) {
+      <tr>
+        <th>{{ hero.id }}</th>
+        <td>{{ hero.name }}</td>
+        <td>
+          <span
+            class="text-xs w-44"
+            [class.text-success]="hero.canFly"
+            [class.text-error]="!hero.canFly"
+            >{{ hero.canFly | canFly }}
+          </span>
+        </td>
+        <td>
+          <span class="text-xs w-44" [style.color]="hero.color | heroTextColor">
+            {{ hero.color | heroColor | titlecase }}
+          </span>
+        </td>
+        <td>{{ hero.creator | heroCreator }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

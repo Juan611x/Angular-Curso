@@ -1,0 +1,88 @@
+<section class="text-center my-8">
+  <h1 class="text-2xl font-bold">Basic Page</h1>
+  <p class="text-xl font-thin">This is a basic page with some example content.</p>
+</section>
+
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+  <div class="stat">
+    <div class="stat-title">LowerCase Pipe</div>
+    <div class="stat-value">{{ this.nameUpper() | lowercase }}</div>
+    <div class="stat-desc">{{ this.nameUpper() }}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-title">UpperCase Pipe</div>
+    <div class="stat-value">{{ this.nameLower() | uppercase }}</div>
+    <div class="stat-desc">{{ this.nameLower() }}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-title">TitleCase Pipe</div>
+    <div class="stat-value">{{ this.fullName() | titlecase }}</div>
+    <div class="stat-desc">{{ this.fullName() }}</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+  <div class="stat">
+    <div class="stat-title">Date Pipe</div>
+    <div class="stat-value">{{ this.customDate() | date }}</div>
+    <div class="stat-desc">{{ this.customDate() }}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-title">Date|long|GMT-6 Pipe</div>
+    <div class="stat-value">{{ this.customDate() | date : 'long' : 'GMT-6' }}</div>
+    <div class="stat-desc">{{ this.customDate() }}</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+  <div class="stat">
+    <div class="stat-title">Date:'yyyy MM' Pipe</div>
+    <div class="stat-value">{{ this.customDate() | date : 'yyyy MM' }}</div>
+    <div class="stat-desc">{{ this.customDate() }}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-title">Date|short|GMT-4 Pipe</div>
+    <div class="stat-value">{{ this.customDate() | date : 'short' : 'GMT-4' }}</div>
+    <div class="stat-desc">{{ this.customDate() }}</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+  <div class="stat">
+    <div class="stat-title">Date:'dd/MM/yyyy' Pipe</div>
+    <div class="stat-value">{{ this.customDate() | date : 'dd/MM/yyyy' }}</div>
+    <div class="stat-desc">{{ this.customDate() }}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-title">Date|HH:mm:ss Pipe</div>
+    <div class="stat-value">{{ this.customDate() | date : 'HH:mm:ss' }}</div>
+    <div class="stat-desc">{{ this.customDate() }}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-title">Date|EEEE d, MMMM</div>
+    <div class="stat-value">{{ this.customDate() | date : 'EEEE d, MMMM' }}</div>
+    <div class="stat-desc">{{ this.customDate() }}</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="flex flex-row gap-2">
+  <h1 class="text-2xl font-bold">Current Local: <span class="badge badge-secondary"> ES </span></h1>
+
+  <button class="btn btn-primary" (click)="this.changeLocal('es')">Change to Spanish</button>
+  <button class="btn btn-primary" (click)="this.changeLocal('fr')">Change to French</button>
+  <button class="btn btn-primary" (click)="this.changeLocal('en')">Change to English</button>
+</div>

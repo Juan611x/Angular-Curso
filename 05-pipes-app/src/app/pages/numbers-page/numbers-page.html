@@ -1,0 +1,26 @@
+<section class="text-center my-8">
+  <h1 class="text-2xl font-bold">Numbers Page</h1>
+  <p class="text-xl font-thin">This is a numbers page with some example content.</p>
+</section>
+
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+  <div class="stat">
+    <div class="stat-title">Number:'1.1-2' Pipe</div>
+    <div class="stat-value">{{ this.totalSales() | number : '1.1-2' }}</div>
+    <div class="stat-desc">{{ this.totalSales() }}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-title">Percent:'1.1-1' Pipe</div>
+    <div class="stat-value">{{ this.percentage() | percent : '1.1-1' }}</div>
+    <div class="stat-desc">{{ this.percentage() }}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-title">Currency Pipe</div>
+    <div class="stat-value">
+      {{ this.totalSales() | currency : 'COP' : 'symbol-narrow' : '1.4-4' }}
+    </div>
+    <div class="stat-desc">{{ this.totalSales() }}</div>
+  </div>
+</div>
