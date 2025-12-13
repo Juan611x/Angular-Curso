@@ -1,0 +1,142 @@
+<h2>Validaciones Reactivas</h2>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <form autocomplete="off" [formGroup]="this.myForm" (ngSubmit)="this.onSubmit()">
+      <!-- Nombre -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Nombre y apellido</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre del usuario"
+            formControlName="name"
+          />
+
+          @if(this.formUtiles.isInvalidField(this.myForm,'name')) {
+          <span class="form-text text-danger">
+            {{ this.formUtiles.getFieldError(this.myForm, 'name') }}
+          </span>
+          }
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Email</label>
+        <div class="col-sm-9">
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Email del usuario"
+            formControlName="email"
+          />
+          @if(this.formUtiles.isInvalidField(this.myForm,'email')) {
+          <span class="form-text text-danger">
+            {{ this.formUtiles.getFieldError(this.myForm, 'email') }}
+          </span>
+          }
+        </div>
+      </div>
+
+      <!-- Username -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Username</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre código del usuario"
+            formControlName="username"
+          />
+          @if(this.formUtiles.isInvalidField(this.myForm,'username')) {
+          <span class="form-text text-danger">
+            {{ this.formUtiles.getFieldError(this.myForm, 'username') }}
+          </span>
+          }
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Password</label>
+        <div class="col-sm-9">
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Password de su cuenta"
+            formControlName="password"
+          />
+
+          @if(this.formUtiles.isInvalidField(this.myForm,'password')) {
+          <span class="form-text text-danger">
+            {{ this.formUtiles.getFieldError(this.myForm, 'password') }}
+          </span>
+          }
+        </div>
+      </div>
+
+      <!-- Password2 -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Confirmar</label>
+        <div class="col-sm-9">
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Confirmar la contraseña"
+            formControlName="password2"
+          />
+
+          @if(this.formUtiles.isInvalidField(this.myForm,'password2')) {
+          <span class="form-text text-danger">
+            {{ this.formUtiles.getFieldError(this.myForm, 'password2') }}
+          </span>
+          }
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <span class="form-text text-danger">
+            @if(this.myForm.errors && this.myForm.touched) { Las contraseñas no coinciden }
+          </span>
+          <button class="btn btn-primary float-end" type="submit" [disabled]="this.myForm.invalid">
+            Crear
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<h2>Form Valid:</h2>
+<pre>{{ this.myForm.valid | json }}</pre>
+
+<h2>Form Status:</h2>
+<pre>{{ this.myForm.status | json }}</pre>
+
+<h2>Form Pending:</h2>
+<pre>{{ this.myForm.pending | json }}</pre>
+
+<h2>Form errors</h2>
+<pre>{{ this.myForm.errors | json }}</pre>
+
+<h2>Form Values</h2>
+<pre>{{ this.myForm.value | json }}</pre>
+
+<h5>Nombre</h5>
+<pre>{{ this.myForm.get('name')?.errors | json }}</pre>
+
+<h5>Email</h5>
+<pre>{{ this.myForm.get('email')?.errors | json }}</pre>
+
+<h5>Username</h5>
+<pre>{{ this.myForm.get('username')?.errors | json }}</pre>
+
+<h5>Password</h5>
+<pre>{{ this.myForm.get('password')?.errors | json }}</pre>
+
+<h5>Confirmar</h5>
+<pre>{{ this.myForm.get('password2')?.errors | json }}</pre>
