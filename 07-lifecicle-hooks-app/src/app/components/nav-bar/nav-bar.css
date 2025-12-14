@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.active {
+  color: #341162;
+  font-weight: bold;
+}
