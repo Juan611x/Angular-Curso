@@ -1,0 +1,11 @@
+<h1 class="text-3xl font-bold font-montserrat">Todos los productos ({{ this.currentPage() }})</h1>
+<h2 class="text-xl mb-5">Para todos los gustos</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-2 gap-3">
+  @for(product of this.productResource.value()?.products; track product.slug){
+  <app-card [product]="product" />
+  }@empty {
+  <p>No hay productos disponibles.</p>
+  }
+</div>
+<app-pagination [pages]="this.productResource.value()?.pages ?? 0" />

@@ -1,0 +1,12 @@
+<div class="card card-compact bg-base-100 shadow-sm animate-fadeIn">
+  <figure>
+    <img [src]="this.product().images | productImage" [alt]="this.product().title" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title text-primary font-montserrat">{{ this.product().title }}</h2>
+    <p>{{ this.product().description | slice : 0 : 70 }}...</p>
+    <div class="card-actions justify-end">
+      <a class="link link-accent" [routerLink]="['/product', this.product().slug]">Comprar</a>
+    </div>
+  </div>
+</div>

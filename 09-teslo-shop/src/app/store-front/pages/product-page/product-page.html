@@ -1,0 +1,25 @@
+<!-- <h1>{{ this.productResource.value()?.title }}</h1>
+<p>{{ this.productResource.value()?.description }}</p>
+<p>{{ this.productResource.value()?.price }}</p>
+<p>{{ this.productResource.isLoading() }}</p> -->
+
+@if(this.productResource.isLoading()) {
+<div class="flex justify-center items-center h-screen">
+  <span class="loading loading-spinner loading-lg"></span>
+</div>
+
+<!--  -->
+} @if(this.productResource.hasValue()) {
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5">
+  <!-- imagenes -->
+  <app-product-carousel [images]="this.productResource.value().images" class="mx-2" />
+
+  <div>
+    <h2 class="text-2xl font-bold font-montserrat">{{ this.productResource.value()?.title }}</h2>
+    <div class="divider"></div>
+    <p>
+      {{ this.productResource.value()?.description }}
+    </p>
+  </div>
+</div>
+}
